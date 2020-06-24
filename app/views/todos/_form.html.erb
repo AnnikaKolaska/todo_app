@@ -1,0 +1,39 @@
+<%= form_with(model: todo, local: true) do |form| %>
+  <% if todo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+
+      <ul>
+        <% todo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :summary %>
+    <%= form.text_field :summary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.number_field :priority %>
+  </div>
+
+  <div class="field">
+    <%= form.label :due_at %>
+    <%= form.datetime_select :due_at %>
+  </div>
+
+<% if todo.persisted? %>
+  <div class="field">
+    <%= form.label :complete %>
+    <%= form.check_box :complete %>
+  </div>
+<% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

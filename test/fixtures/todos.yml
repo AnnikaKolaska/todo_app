@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  summary: MyFirstTodo
+  priority: 1
+  due_at: 2020-06-23 03:00:00
+  complete: false
+
+two:
+  summary: MySecondTodo
+  priority: 2
+  due_at: 2020-06-23 01:00:00
+  complete: false
+
+three:
+  summary: MyThirdTodo
+  priority: 3
+  due_at: 2020-06-23 02:00:00
+  complete: false
