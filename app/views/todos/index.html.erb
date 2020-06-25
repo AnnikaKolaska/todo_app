@@ -17,22 +17,8 @@
 
   <tbody>
     <% @todos.each do |todo| %>
-      <tr class="_capybara-todo">
-        <td><%= todo.summary %></td>
-        <td><%= todo.priority %></td>
-        <td><%= todo.due_at %></td>
-        <td><%= todo.complete %></td>
-        <td>
-          <%= form_with(model: todo, local: true) do |form| %>
-            <div class="field">
-              <%= form.label :complete %>
-              <%= form.check_box :complete, class: 'checkbox' %>
-            </div>
-          <% end %>
-        </td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr id="todo_<%= todo.id %>" class="_capybara-todo todo <%= todo.complete ? "completed" : "" %>">
+        <%= render todo %>
       </tr>
     <% end %>
   </tbody>

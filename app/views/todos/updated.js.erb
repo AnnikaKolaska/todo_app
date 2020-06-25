@@ -1,0 +1,9 @@
+var todo_element = document.getElementById("todo_<%= @todo.id %>")
+todo_element.innerHTML = "<%= escape_javascript(render(@todo)) %>"
+todo_element.className = "_capybara-todo todo <%= @todo.complete ? 'completed' : '' %>"
+
+var checkbox = todo_element.querySelectorAll("form .checkbox")
+var form = todo_element.querySelectorAll("form")
+  checkbox[0].addEventListener("change", function() {
+    rails.fire(form[0], 'submit')
+  }) 

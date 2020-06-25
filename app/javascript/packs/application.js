@@ -2,8 +2,10 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
+const Rails = require("@rails/ujs")
+window.rails = Rails 
+Rails.start()
 
-require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -16,16 +18,17 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+/* global Rails*/
 document.addEventListener("turbolinks:load", function() {
   var checkboxes = document.getElementsByClassName("checkbox")
-  console.log(checkboxes)
   for (let checkbox of checkboxes) {
     checkbox.addEventListener("change", function() {
-      checkbox.form.submit()
+      Rails.fire(checkbox.form, 'submit')
+      // checkbox.form.submit()
     }) 
   }
+  
 })
 
 
-    
 
