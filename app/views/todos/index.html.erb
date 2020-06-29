@@ -16,8 +16,10 @@
   </thead>
 
   <tbody>
-    <% @todos.each do |todo| %>
-      <tr id="todo_<%= todo.id %>" class="_capybara-todo todo <%= todo.complete ? "completed" : "" %>">
+    <% @todo_decorators.each do |todo| %>
+    <%# @todos.each do |todo| %>
+      <tr id="todo_<%= todo.id %>" class="<%=todo.classes%>">
+      <!--<tr id="todo_<%#= todo.id %>" class= "_capybara-todo todo <%#= todo.complete ? "completed" : "" %>" >-->
         <%= render todo %>
       </tr>
     <% end %>

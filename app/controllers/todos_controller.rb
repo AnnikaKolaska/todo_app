@@ -5,7 +5,12 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all.order(sort_column + ' ' + sort_direction)
+   # @todos = Todo.all.order(sort_column + ' ' + sort_direction)
+    todos = Todo.all.order(sort_column + ' ' + sort_direction)
+    @todo_decorators = []
+    todos.each do |todo| 
+      @todo_decorators << TodoDecorator.new(todo)
+    end
   end
 
   # GET /todos/1
